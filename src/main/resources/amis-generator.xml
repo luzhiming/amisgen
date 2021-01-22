@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<generationConfiguration>
+    <!--配置suda 或者 amis , 如果不存在则默认amis 主要是suda 和 amis的 post 请求发送方式不同-->
+    <apiHost>API_HOST</apiHost>
+    <!--Service 打包目录-->
+    <servicePackage>com.baiti.kandian.kandian.service</servicePackage>
+    <!--Controller 打包目录-->
+    <controllerPackage>com.baiti.kandian.kandian.controller.admin</controllerPackage>
+    <!--Amis文件 打包目录-->
+    <amisPackage>src/main/resources/amis</amisPackage>
+
+    <amis>
+        <amisService>
+            <!--生成的文件名-->
+            <serviceName>AmidAdminTeacherCashOutService</serviceName>
+            <controllerName>AmidAdminTeacherCashOutController</controllerName>
+            <controllerMapping>/amis/admin/cashout</controllerMapping>
+            <!--类的全路径名-->
+            <daoClazzName>com.baiti.kandian.kandian.domain.TeacherCashOutDoByAA</daoClazzName>
+            <mapperClazzName>com.baiti.kandian.kandian.mapper.TeacherCashOutMapper</mapperClazzName>
+            <exampleClazzName>com.baiti.kandian.kandian.domain.TeacherCashOutDoExample</exampleClazzName>
+        </amisService>
+    </amis>
+</generationConfiguration>

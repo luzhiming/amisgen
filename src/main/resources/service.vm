@@ -1,0 +1,58 @@
+package $package;
+
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import com.luzm.amis.gen.bean.AmisPageReq;
+import com.luzm.amis.gen.bean.BaseAmisListData;
+import com.luzm.amis.gen.bean.BaseAmisListResponse;
+import com.luzm.amis.gen.bean.BaseAmisResponse;
+import com.luzm.amis.gen.bean.StringAmisData;
+
+
+import java.util.List;
+
+@Service
+public class $serviceName {
+
+    @Autowired
+    private $mapper mapper;
+
+    public BaseAmisListResponse list(AmisPageReq req) {
+        BaseAmisListResponse baseAmisListResponse = new BaseAmisListResponse();
+        BaseAmisListData<$dao> data = new BaseAmisListData();
+        Page<Object> page = PageHelper.startPage(req.getPage(), req.getPerPage(), "id desc");
+        $example example = new $example();
+        List<$dao> dos = mapper.selectByExample(example);
+        data.setItems(dos);
+        data.setTotal(page.getTotal());
+        baseAmisListResponse.setData(data);
+        return baseAmisListResponse;
+
+    }
+
+    public BaseAmisResponse<StringAmisData> add($dao dao) {
+        mapper.insert(dao);
+        BaseAmisResponse<StringAmisData> response = new BaseAmisResponse<>();
+        StringAmisData data = new StringAmisData();
+        response.setData(data);
+        return response;
+    }
+
+    public BaseAmisResponse<StringAmisData> delete(Long id) {
+        mapper.deleteByPrimaryKey(id);
+        BaseAmisResponse<StringAmisData> response = new BaseAmisResponse<>();
+        StringAmisData data = new StringAmisData();
+        response.setData(data);
+        return response;
+    }
+
+    public BaseAmisResponse<StringAmisData> update($dao daoReq) {
+        mapper.updateByPrimaryKeySelective(daoReq);
+        BaseAmisResponse<StringAmisData> response = new BaseAmisResponse<>();
+        StringAmisData data = new StringAmisData();
+        response.setData(data);
+        return response;
+    }
+}

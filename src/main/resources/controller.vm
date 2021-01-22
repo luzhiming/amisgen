@@ -1,0 +1,46 @@
+package $package;
+
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import com.luzm.amis.gen.bean.AmisPageReq;
+import com.luzm.amis.gen.bean.BaseAmisListResponse;
+import com.luzm.amis.gen.bean.BaseAmisResponse;
+import com.luzm.amis.gen.bean.StringAmisData;
+
+@Slf4j
+@Controller
+@RequestMapping("$controllerMapping")
+public class $controllerName {
+
+    @Autowired
+    private $serviceName service;
+
+    @RequestMapping("/add")
+    @ResponseBody
+    public BaseAmisResponse<StringAmisData> add(@RequestBody $dao dao) {
+        return service.add(dao);
+    }
+
+    @RequestMapping("/delete/{id}")
+    @ResponseBody
+    public BaseAmisResponse<StringAmisData> delete(@PathVariable Long id) {
+        return service.delete(id);
+    }
+
+    @RequestMapping("/update")
+    @ResponseBody
+    public BaseAmisResponse<StringAmisData> update(@RequestBody $dao dao) {
+        return service.update(dao);
+    }
+
+    @RequestMapping("/list")
+    @ResponseBody
+    public BaseAmisListResponse list(AmisPageReq req) {
+        return service.list(req);
+    }
+}
